@@ -1,0 +1,56 @@
+import pygame
+
+# Initialize Pygame
+pygame.init()
+
+# Screen settings
+width, height = 400, 400
+screen = pygame.display.set_mode((width, height))
+pygame.display.set_caption("Skull")
+
+# Colors
+white = (255, 255, 255)
+black = (0, 0, 0)
+
+
+while(True):
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+    
+    mouse_x, mouse_y = pygame.mouse.get_pos()
+    print(mouse_x, mouse_y)
+
+    screen.fill((50, 50, 50))  # Background color
+
+    # Draw skull head (upper part)
+    pygame.draw.circle(screen, white, (200, 150), 70)  # Upper skull circle
+    
+    # Draw skull jaw (lower part)
+    pygame.draw.ellipse(screen, white, (160, 199, 80, 50))  # Lower jaw oval
+
+    # Draw eyes (large black circles)
+    pygame.draw.circle(screen, black, (175, 140), 25)
+    pygame.draw.circle(screen, black, (225, 140), 25)
+
+    pygame.draw.circle(screen, white, (200, 125), 25)
+
+  
+
+    # Draw nose (upside-down triangle)
+    pygame.draw.polygon(screen, black, [(185,182), (214,182), (200, 160)])  
+
+    #teeth!
+    for i in range(2):
+        for j in range(4):
+            pygame.draw.rect(screen, black, (180+j*10, 215+i*10, 7, 8))
+            
+            
+    
+
+    
+    # Update display
+    pygame.display.flip()
+
+
+pygame.quit()
